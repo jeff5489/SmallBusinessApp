@@ -1,0 +1,25 @@
+Product:
+
+{
+	"id": 1,
+	"name": "Product 1",
+	"salePrice": 5.99
+}
+
+
+Customer:
+
+{
+	"id": "C1",
+	"firstName": "John",
+	"secondName": "Doe",
+	"phoneNum": 3331114444,
+	"address": "123 Opposition St.
+}
+{
+	"id": "C2",
+	"firstName": "Jane",
+	"secondName": "Foe",
+	"phoneNum": 3331114445,
+	"address": "124 Opposition St.
+}
