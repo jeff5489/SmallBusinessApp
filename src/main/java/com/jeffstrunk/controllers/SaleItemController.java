@@ -15,44 +15,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jeffstrunk.entities.Product;
-import com.jeffstrunk.services.ProductService;
+import com.jeffstrunk.entities.SaleItem;
+import com.jeffstrunk.services.SaleItemService;
 
 @RestController
-@RequestMapping("products")
-public class ProductController {
-
-	private final ProductService service;
+@RequestMapping("saleitems")
+public class SaleItemController {
+	
+	private final SaleItemService service;
 
 	@Autowired
-	public ProductController(ProductService service) {
+	public SaleItemController(SaleItemService service) {
 		this.service = service;
 	}
 	
 	@GetMapping
-	public List<Product> getAll() {
-		return service.getProducts();
+	public List<SaleItem> getAll() {
+		return service.getSaleItems();
 	}
 	
 	@GetMapping(path = "{id}")
-	public Optional getProduct(@NotNull @PathVariable("id")int id) {
-		return service.getProduct(id);
+	public Optional getSaleItem(@NotNull @PathVariable("id")int id) {
+		return service.getSaleItem(id);
 	}
 	
 	@PostMapping
-	public void addProduct(@RequestBody Product product) {
-		service.addProduct(product);
+	public void addSaleItem(@RequestBody SaleItem saleItem) {
+		service.addSaleItem(saleItem);
 	}
 	
 	@PutMapping(path = "{id}")
-	public void updateProduct(@RequestBody Product product, @PathVariable("id") int id) {
-		service.updateProduct(product, id);
+	public void updateSaleItem(@RequestBody SaleItem saleItem, @PathVariable("id") int id) {
+		service.updateSaleItem(saleItem, id);
 
 	}
 	
 	@DeleteMapping(path = "{id}")
-	public void deleteProduct(@PathVariable Integer id) {
-		service.deleteProduct(id);
+	public void deleteSaleItem(@PathVariable Integer id) {
+		service.deleteSaleItem(id);
 	}
 	
 }

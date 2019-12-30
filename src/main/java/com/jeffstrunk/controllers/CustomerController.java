@@ -21,7 +21,7 @@ import com.jeffstrunk.services.CustomerService;
 import com.jeffstrunk.services.ProductService;
 
 @RestController
-@RequestMapping("customer")
+@RequestMapping("customers")
 public class CustomerController {
 	
 	private final CustomerService service;

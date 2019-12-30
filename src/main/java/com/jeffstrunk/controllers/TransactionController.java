@@ -15,44 +15,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jeffstrunk.entities.Product;
-import com.jeffstrunk.services.ProductService;
+import com.jeffstrunk.entities.Transaction;
+import com.jeffstrunk.services.TransactionService;
 
 @RestController
-@RequestMapping("products")
-public class ProductController {
-
-	private final ProductService service;
+@RequestMapping("transactions")
+public class TransactionController {
+	private final TransactionService service;
 
 	@Autowired
-	public ProductController(ProductService service) {
+	public TransactionController(TransactionService service) {
 		this.service = service;
 	}
 	
 	@GetMapping
-	public List<Product> getAll() {
-		return service.getProducts();
+	public List<Transaction> getAll() {
+		return service.getTransactions();
 	}
 	
 	@GetMapping(path = "{id}")
-	public Optional getProduct(@NotNull @PathVariable("id")int id) {
-		return service.getProduct(id);
+	public Optional getTransaction(@NotNull @PathVariable("id")int id) {
+		return service.getTransaction(id);
 	}
 	
 	@PostMapping
-	public void addProduct(@RequestBody Product product) {
-		service.addProduct(product);
+	public void addTransaction(@RequestBody Transaction transaction) {
+		service.addTransaction(transaction);
 	}
 	
-	@PutMapping(path = "{id}")
-	public void updateProduct(@RequestBody Product product, @PathVariable("id") int id) {
-		service.updateProduct(product, id);
-
-	}
+//	@PutMapping(path = "{id}")
+//	public void updateTransaction(@RequestBody Transaction transaction, @PathVariable("id") int id) {
+//		service.updateTransaction(transaction, id);
+//
+//	}
 	
 	@DeleteMapping(path = "{id}")
-	public void deleteProduct(@PathVariable Integer id) {
-		service.deleteProduct(id);
+	public void deleteTransaction(@PathVariable Integer id) {
+		service.deleteTransaction(id);
 	}
-	
 }

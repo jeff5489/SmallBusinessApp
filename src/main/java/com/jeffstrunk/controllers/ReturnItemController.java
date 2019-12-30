@@ -15,44 +15,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jeffstrunk.entities.Product;
-import com.jeffstrunk.services.ProductService;
+import com.jeffstrunk.entities.ReturnItem;
+import com.jeffstrunk.services.ReturnItemService;
 
 @RestController
-@RequestMapping("products")
-public class ProductController {
-
-	private final ProductService service;
+@RequestMapping("returnitems")
+public class ReturnItemController {
+	private final ReturnItemService service;
 
 	@Autowired
-	public ProductController(ProductService service) {
+	public ReturnItemController(ReturnItemService service) {
 		this.service = service;
 	}
 	
 	@GetMapping
-	public List<Product> getAll() {
-		return service.getProducts();
+	public List<ReturnItem> getAll() {
+		return service.getReturnItems();
 	}
 	
 	@GetMapping(path = "{id}")
-	public Optional getProduct(@NotNull @PathVariable("id")int id) {
-		return service.getProduct(id);
+	public Optional getReturnItem(@NotNull @PathVariable("id")int id) {
+		return service.getReturnItem(id);
 	}
 	
 	@PostMapping
-	public void addProduct(@RequestBody Product product) {
-		service.addProduct(product);
+	public void addReturnItem(@RequestBody ReturnItem returnItem) {
+		service.addReturnItem(returnItem);
 	}
 	
 	@PutMapping(path = "{id}")
-	public void updateProduct(@RequestBody Product product, @PathVariable("id") int id) {
-		service.updateProduct(product, id);
+	public void updateReturnItem(@RequestBody ReturnItem returnItem, @PathVariable("id") int id) {
+		service.updateReturnItem(returnItem, id);
 
 	}
 	
 	@DeleteMapping(path = "{id}")
-	public void deleteProduct(@PathVariable Integer id) {
-		service.deleteProduct(id);
+	public void deleteReturnItem(@PathVariable Integer id) {
+		service.deleteReturnItem(id);
 	}
-	
 }

@@ -18,7 +18,7 @@ public class Transaction {
 	private String customerID;
 	
 	@OneToMany
-	private List<SaleItem> productsOfTransaction = new ArrayList<SaleItem>();
+	private List<Product> productsOfTransaction = new ArrayList<Product>();
 	private double transactionAmount;
 	
 //	public Transaction() {
@@ -27,7 +27,7 @@ public class Transaction {
 
 	public double getTransactionAmount() {
 // calculate Transaction Amount
-		calculateTransactionAmount();
+//		calculateTransactionAmount();
 		return transactionAmount;
 	}
 
@@ -43,7 +43,7 @@ public class Transaction {
 		this.transactionAmount = transactionAmount;
 	}
 
-	public Transaction(Date dateTimeOfTransaction, String customerID, ArrayList<SaleItem> productsOfTransaction) {
+	public Transaction(Date dateTimeOfTransaction, String customerID, ArrayList<Product> productsOfTransaction) {
 		super();
 		this.dateTimeOfTransaction = dateTimeOfTransaction;
 		this.customerID = customerID;
@@ -66,18 +66,18 @@ public class Transaction {
 		this.customerID = customerID;
 	}
 
-	public List<SaleItem> getProductsOfTransaction() {
+	public List<Product> getProductsOfTransaction() {
 // calculate Transaction Amount
-		calculateTransactionAmount();
+//		calculateTransactionAmount();
 		return productsOfTransaction;
 	}
 
-	public void setProductsOfTransaction(ArrayList<SaleItem> productsOfTransaction) {
+	public void setProductsOfTransaction(ArrayList<Product> productsOfTransaction) {
 		this.productsOfTransaction = productsOfTransaction;
 	}
 	
-	public void addProductToProductsOfTransaction(SaleItem saleItem) {
-		productsOfTransaction.add(saleItem);
+	public void addProductToProductsOfTransaction(Product product) {
+		productsOfTransaction.add(product);
 	}
 	
 	public void removeProductFromProductsOfTransaction(int id) {
@@ -90,9 +90,9 @@ public class Transaction {
 				+ ", productsOfTransaction=" + productsOfTransaction + ", transactionAmount=" + transactionAmount + "]";
 	}
 	
-	private void calculateTransactionAmount() {
-		transactionAmount = productsOfTransaction.stream().mapToDouble(i -> i.getQuantity() * i.getSalePrice()).sum();
-	}
+//	private void calculateTransactionAmount() {
+//		transactionAmount = productsOfTransaction.stream().mapToDouble(i -> i.getQuantity() * i.getSalePrice()).sum();
+//	}
 	
 	
 	

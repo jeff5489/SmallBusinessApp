@@ -28,14 +28,14 @@ public abstract class Employee extends Person {
 		this.title = title;
 	}
 
-	public void createSale(Date hireDate, String id, ArrayList list) {
-		Sale sale = new Sale(hireDate, id, list);
-	}
-	
-	public void createReturn(Date hireDate, String id, ArrayList list) {
-		ReturnItems returnItems = new ReturnItems(hireDate, id, list);
-		
-	}
+//	public void createSale(Date hireDate, String id, ArrayList list) {
+//		Sale sale = new Sale(hireDate, id, list);
+//	}
+//	
+//	public void createReturn(Date hireDate, String id, ArrayList list) {
+//		ReturnItem returnItem = new ReturnItem(hireDate, id, list);
+//		
+//	}
 	
 	public void generateCustomerTransactionHistory() {
 		
