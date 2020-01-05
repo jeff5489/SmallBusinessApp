@@ -11,7 +11,7 @@ public class Clerk extends Employee {
 		
 	}
 	
-	public Clerk(String firstName, String secondName, String id, long phoneNum, String address, double payRate,
+	public Clerk(String firstName, String secondName, String id, String phoneNum, String address, double payRate,
 			Date hireDate, String title) {
 		super(firstName, secondName, id, phoneNum, address, payRate, hireDate, title);
 	}

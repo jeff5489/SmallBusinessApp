@@ -1,14 +1,23 @@
 package com.jeffstrunk.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "products")
+
 public class Product {
 
 	@Id
-	private int id;
+	@Column(name = "id")
+	private String id;
+	
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "saleprice")
 	private double salePrice;
 	
 	public double getSalePrice() {
@@ -20,7 +29,7 @@ public class Product {
 	public Product() {
 		
 	}
-	public Product(int id, String name, double salePrice) {
+	public Product(String id, String name, double salePrice) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,10 +40,10 @@ public class Product {
 		this.name = name;
 		this.salePrice = salePrice;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {

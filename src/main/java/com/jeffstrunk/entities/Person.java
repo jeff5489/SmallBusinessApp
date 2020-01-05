@@ -1,22 +1,37 @@
 package com.jeffstrunk.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "persons")
+
 public abstract class Person {
 
 	@Id
 	private String id;
+	
+//	@Column(name = "first_name")
 	private String firstName;
+	
+//	@Column(name = "last_name")
 	private String lastName;
-	private long phoneNum;
+	
+//	@Column(name = "phone_num")
+	private String phoneNum;
+	
+//	@Column(name = "address")
 	private String address;
 	
 	public Person() {
 	}
 
-	public Person(String firstName, String lastName, String id, long phoneNum, String address) {
+	public Person(String firstName, String lastName, String id, String phoneNum, String address) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -49,11 +64,11 @@ public abstract class Person {
 		this.id = id;
 	}
 
-	public long getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(long phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 

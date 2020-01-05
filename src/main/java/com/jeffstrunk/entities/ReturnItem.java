@@ -19,10 +19,22 @@ public class ReturnItem extends Product {
 	}
 
 	
-	public ReturnItem(int id, String name, double salePrice, int quantity) {
+	public ReturnItem(String id, String name, double salePrice, int quantity) {
 		super(id, name, salePrice);
 		this.quantity = quantity;
 	}
+
+	public ReturnItem(int quantity) {
+		super();
+		this.quantity = quantity;
+	}
+
+	public ReturnItem() {
+		super();
+	}
+	
+	
+	
 	
 //	public ReturnItem(Date dateTimeOfTransaction, String customerID,ArrayList<SaleItem> productsOfTransaction) {
 //		super(dateTimeOfTransaction, customerID, productsOfTransaction);

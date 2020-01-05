@@ -4,10 +4,22 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public abstract class Employee extends Person {
 	
+//	@OneToOne
+	private String employeeId;
+	
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
 	private double payRate;
 	private Date hireDate;
 	private String title;
@@ -16,11 +28,11 @@ public abstract class Employee extends Person {
 		super();
 	}
 
-	public Employee(String firstName, String secondName, String id, long phoneNum, String address) {
+	public Employee(String firstName, String secondName, String id, String phoneNum, String address) {
 		super(firstName, secondName, id, phoneNum, address);
 	}
 
-	public Employee(String firstName, String secondName, String id, long phoneNum, String address, double payRate,
+	public Employee(String firstName, String secondName, String id, String phoneNum, String address, double payRate,
 			Date hireDate, String title) {
 		super(firstName, secondName, id, phoneNum, address);
 		this.payRate = payRate;

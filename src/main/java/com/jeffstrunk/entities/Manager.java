@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 @Entity
 public class Manager extends Employee {
 
-	public Manager(String firstName, String lastName, String id, long phoneNum, String address, double payRate,
+	public Manager(String firstName, String lastName, String id, String phoneNum, String address, double payRate,
 			Date hireDate, String title) {
 		super(firstName, lastName, id, phoneNum, address, payRate, hireDate, title);
 	}
@@ -28,13 +28,13 @@ public class Manager extends Employee {
 		InventoryListContainer.InventoryList.removeFromInventoryList(index);
 	}
 	
-	public void createClerk(String firstName, String lastName, String id, long phoneNum, String address, double payRate, 
+	public void createClerk(String firstName, String lastName, String id, String phoneNum, String address, double payRate, 
 			Date hireDate, String title) {
 		Clerk clerk = new Clerk(firstName, lastName, id, phoneNum, address, payRate, hireDate, title);
 		EmployeeListContainer.EmployeeList.addToEmployeeList(clerk);
 	}
 	
-	public void createManager(String firstName, String lastName, String id, long phoneNum, String address, double payRate, 
+	public void createManager(String firstName, String lastName, String id, String phoneNum, String address, double payRate, 
 			Date hireDate, String title) {
 		Manager manager = new Manager(firstName, lastName, id, phoneNum, address, payRate, hireDate, title);
 		EmployeeListContainer.EmployeeList.addToEmployeeList(manager);

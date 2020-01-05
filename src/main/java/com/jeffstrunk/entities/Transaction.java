@@ -1,29 +1,38 @@
 package com.jeffstrunk.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "transactions")
 public class Transaction {
 	
 	@Id
-	private int id;
-	private Date dateTimeOfTransaction;
-	private String customerID;
-	
-	@OneToMany
-	private List<Product> productsOfTransaction = new ArrayList<Product>();
+	@Column(name = "transactionId")
+	private String transactionId;
+	@Column(name = "transactionDateTime")
+	private LocalDateTime transactionDateTime;
+	@Column(name = "customerId")
+	private String customerId;
+	@Column(name = "transactionAmount")
 	private double transactionAmount;
 	
-//	public Transaction() {
-//		super();
-//	}
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Product> productsOfTransaction = new ArrayList<Product>();
+	
+	
+	public Transaction() {
+	}
 
 	public double getTransactionAmount() {
 // calculate Transaction Amount
@@ -31,39 +40,50 @@ public class Transaction {
 		return transactionAmount;
 	}
 
-	public int getId() {
-		return id;
+	public String getId() {
+		return transactionId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public void setTransactionAmount(double transactionAmount) {
 		this.transactionAmount = transactionAmount;
 	}
 
-	public Transaction(Date dateTimeOfTransaction, String customerID, ArrayList<Product> productsOfTransaction) {
+	public Transaction(LocalDateTime dateTimeOfTransaction, String customerID, ArrayList<Product> productsOfTransaction) {
 		super();
-		this.dateTimeOfTransaction = dateTimeOfTransaction;
-		this.customerID = customerID;
+		this.transactionDateTime = dateTimeOfTransaction;
+		this.customerId = customerID;
 		this.productsOfTransaction = productsOfTransaction;
 	}
+	
+	
 
-	public Date getDateTimeOfTransaction() {
-		return dateTimeOfTransaction;
+	public Transaction(String id, LocalDateTime transactionDateTime, String customerID, List<Product> productsOfTransaction,
+		double transactionAmount) {
+		this.transactionId = id;
+		this.transactionDateTime = transactionDateTime;
+		this.customerId = customerID;
+		this.productsOfTransaction = productsOfTransaction;
+		this.transactionAmount = transactionAmount;
 	}
 
-	public void setDateTimeOfTransaction(Date dateTimeOfTransaction) {
-		this.dateTimeOfTransaction = dateTimeOfTransaction;
+	public LocalDateTime getTransactionDateTime() {
+		return transactionDateTime;
+	}
+
+	public void setTransactionDateTime(LocalDateTime transactionDateTime) {
+		this.transactionDateTime = transactionDateTime;
 	}
 
 	public String getCustomerID() {
-		return customerID;
+		return customerId;
 	}
 
 	public void setCustomerID(String customerID) {
-		this.customerID = customerID;
+		this.customerId = customerID;
 	}
 
 	public List<Product> getProductsOfTransaction() {
@@ -86,7 +106,7 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [dateTimeOfTransaction=" + dateTimeOfTransaction + ", customerID=" + customerID
+		return "Transaction [transactionDateTime=" + transactionDateTime + ", customerID=" + customerId
 				+ ", productsOfTransaction=" + productsOfTransaction + ", transactionAmount=" + transactionAmount + "]";
 	}
 	

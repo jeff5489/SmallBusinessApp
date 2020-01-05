@@ -17,11 +17,11 @@ public class InventoryItem extends Product {
 		this.quantity = quantity;
 	}
 
-	public InventoryItem(int id, String name, double salePrice) {
+	public InventoryItem(String id, String name, double salePrice) {
 		super(id, name, salePrice);
 	}
 
-	public InventoryItem(int id, String name, double salePrice, int quantity) {
+	public InventoryItem(String id, String name, double salePrice, int quantity) {
 		super(id, name, salePrice);
 		this.quantity = quantity;
 	}
@@ -30,7 +30,7 @@ public class InventoryItem extends Product {
 //	public String toString() {
 //		return "InventoryItem [quantity=" + quantity + " SalePrice="
 //				+ getSalePrice() + ", Id=" + getId() + ", Name=" + getName() 
-//				+ "]";
+//				+ "]";zaaaaaaaaa
 //	}
 	
 	@Override

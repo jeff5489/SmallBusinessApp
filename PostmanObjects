@@ -1,3 +1,19 @@
+Customer:
+
+{
+	"id": "C1",
+	"firstName": "John",
+	"secondName": "Doe",
+	"phoneNum": 3331114444,
+	"address": "123 Opposition St."
+}
+{
+	"id": "C2",
+	"firstName": "Jane",
+	"secondName": "Foe",
+	"phoneNum": 3331114445,
+	"address": "124 Opposition St."
+}
 Product:
 
 {
@@ -6,20 +22,25 @@ Product:
 	"salePrice": 5.99
 }
 
-
-Customer:
-
+Return Item:
 {
-	"id": "C1",
-	"firstName": "John",
-	"secondName": "Doe",
-	"phoneNum": 3331114444,
-	"address": "123 Opposition St.
+	"id": 1,
+	"name": "Product 1",
+	"salePrice": 5.99,
+	"quantity": 100
 }
+
+Sale Item:
 {
-	"id": "C2",
-	"firstName": "Jane",
-	"secondName": "Foe",
-	"phoneNum": 3331114445,
-	"address": "124 Opposition St.
+	"id": 1,
+	"name": "Product 1",
+	"salePrice": 5.99,
+	"quantity": 100
+}
+
+Transaction:
+{
+	"id": 1000,
+	"dateTimeOfTransaction": 1,
+	"customerID": 1,
 }
