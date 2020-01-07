@@ -33,27 +33,31 @@ public class CustomerController {
 	
 	@GetMapping
 	public List<Customer> getAll() {
+		System.out.println("GET ALL CUSTOMERS");
 		return service.getCustomers();
 	}
 	
 	@GetMapping(path = "{id}")
 	public Optional getCustomer(@NotNull @PathVariable("id")String id) {
+		System.out.println("GET ONE CUSTOMER");
 		return service.getCustomer(id);
 	}
 	
 	@PostMapping
 	public void addCustomer(@RequestBody Customer customer) {
+		System.out.println("ADD A CUSTOMER");
 		service.addCustomer(customer);
 	}
 	
 	@PutMapping(path = "{id}")
 	public void updateCustomer(@RequestBody Customer customer, @PathVariable("id") String id) {
+		System.out.println("UPDATE A CUSTOMER");
 		service.updateCustomer(customer, id);
-
 	}
 	
 	@DeleteMapping(path = "{id}")
 	public void deleteCustomer(@PathVariable String id) {
+		System.out.println("DELETE A CUSTOMER");
 		service.deleteCustomer(id);
 	}
 
