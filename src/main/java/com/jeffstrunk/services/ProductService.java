@@ -26,7 +26,7 @@ public class ProductService {
 		return products;
 	}
 	
-	public Optional<Product> getProduct(int id) {
+	public Optional<Product> getProduct(long id) {
 		return repo.findById(id);
 	}
 	
@@ -34,7 +34,7 @@ public class ProductService {
 		repo.save(product);
 	}
 	
-	public void updateProduct(Product product, int id) {
+	public void updateProduct(Product product, long id) {
 		repo.findById(id).map( item -> {
 			item.setId(product.getId());
 			item.setName(product.getName());
@@ -43,7 +43,7 @@ public class ProductService {
 		});
 	}
 
-	public void deleteProduct(int id) {
+	public void deleteProduct(long id) {
 		repo.deleteById(id);
 	}
 }

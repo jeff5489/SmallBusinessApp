@@ -1,59 +1,93 @@
 package com.jeffstrunk.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 
 public class Product {
 
 	@Id
-	@Column(name = "id")
-	private String id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "product_Id")
+	private long productId;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "product_Name")
+	private String productName;
 
-	@Column(name = "saleprice")
-	private double salePrice;
+	@Column(name = "product_Saleprice")
+	private double productSalePrice;
+	
+	@ManyToMany(mappedBy = "productsOfTransaction")
+	private List <Transaction> transactions;
+	
+//	@Column(name = "transaction_Id")
+//	private long transactionId;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "transactionId")
+//	private long transactionId;
+	
+//	@ManyToOne
+//	private Transaction transaction;
 	
 	public double getSalePrice() {
-		return salePrice;
+		return productSalePrice;
 	}
 	public void setSalePrice(double salePrice) {
-		this.salePrice = salePrice;
+		this.productSalePrice = salePrice;
 	}
 	public Product() {
 		
 	}
-	public Product(String id, String name, double salePrice) {
+	public Product(long productId, String productName, double salePrice) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.salePrice = salePrice;
+		this.productId = productId;
+		this.productName = productName;
+		this.productSalePrice = salePrice;
 	}
 	public Product(String name, double salePrice) {
 		super();
-		this.name = name;
-		this.salePrice = salePrice;
+		this.productName = name;
+		this.productSalePrice = salePrice;
 	}
-	public String getId() {
-		return id;
+	public long getId() {
+		return productId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(long id) {
+		this.productId = id;
 	}
 	public String getName() {
-		return name;
+		return productName;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.productName = name;
 	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", salePrice=" + salePrice + "]";
+		return "Product [productId=" + productId + ", productName=" + productName + ", productSalePrice="
+				+ productSalePrice + ", transactions=" + transactions + "]";
 	}
+//	@Override
+//	public String toString() {
+//		return "Product [id=" + productId + ", name=" + productName + ", salePrice=" + productSalePrice + "]";
+//	}
+	
+//	public long getTransactionId() {
+//		return transactionId;
+//	}
+//	public void setTransaction_Id(long transactionId) {
+//		this.transactionId = transactionId;
+//	}
 }

@@ -17,11 +17,11 @@ public class InventoryItem extends Product {
 		this.quantity = quantity;
 	}
 
-	public InventoryItem(String id, String name, double salePrice) {
+	public InventoryItem(long id, String name, double salePrice) {
 		super(id, name, salePrice);
 	}
 
-	public InventoryItem(String id, String name, double salePrice, int quantity) {
+	public InventoryItem(long id, String name, double salePrice, int quantity) {
 		super(id, name, salePrice);
 		this.quantity = quantity;
 	}

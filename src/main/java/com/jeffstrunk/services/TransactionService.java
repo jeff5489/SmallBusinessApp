@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jeffstrunk.dao.TransactionDao;
+import com.jeffstrunk.entities.Product;
 import com.jeffstrunk.entities.Transaction;
 
 @Service
@@ -28,15 +29,20 @@ public class TransactionService {
 		return transactions;
 	}
 	
-	public Optional<Transaction> getTransaction(int id) {
+	public Optional<Transaction> getTransaction(Long id) {
 		return repo.findById(id);
 	}
 	
 	public void addTransaction(Transaction transaction){
 		repo.save(transaction);
 	}
+	
+	public void addProductToTransaction(Product product) {
+		System.out.println("addProductToTransaction() reached");
+		
+	}
 
-	public void deleteTransaction(int id) {
+	public void deleteTransaction(Long id) {
 		repo.deleteById(id);
 	}
 }

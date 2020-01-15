@@ -15,33 +15,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jeffstrunk.dao.ProductDao;
+import com.jeffstrunk.entities.Product;
 import com.jeffstrunk.entities.Transaction;
 import com.jeffstrunk.services.TransactionService;
 
 @RestController
 @RequestMapping("transactions")
 public class TransactionController {
-	private final TransactionService service;
-
+	
 	@Autowired
-	public TransactionController(TransactionService service) {
-		this.service = service;
-	}
+	TransactionService transactionService;
+	
+	@Autowired
+	ProductDao productDao;
+	
 	
 	@GetMapping
 	public List<Transaction> getAll() {
-		return service.getTransactions();
+		System.out.println("GET ALL TRANSACTIONS");
+		return transactionService.getTransactions();
 	}
 	
 	@GetMapping(path = "{id}")
-	public Optional getTransaction(@NotNull @PathVariable("id")int id) {
-		return service.getTransaction(id);
+	public Optional getTransaction(@NotNull @PathVariable("id")Long id) {
+		System.out.println("GET ONE TRANSACTION");
+		return transactionService.getTransaction(id);
 	}
 	
 	@PostMapping
-	public void addTransaction(@RequestBody Transaction transaction) {
-		service.addTransaction(transaction);
+	public Transaction addTransaction(@RequestBody Transaction transaction) {
+		System.out.println("ADD TRANSACTION");
+		System.out.println(transaction);
+		transactionService.addTransaction(transaction);
+		
+		return transaction;
 	}
+	
+//	@PostMapping
+//	public void addProductToTransaction(@RequestBody Product product) {
+//		System.out.println("addProductToTransaction REACHED");
+//		transactionService.addProductToTransaction(product);
+//	}
 	
 //	@PutMapping(path = "{id}")
 //	public void updateTransaction(@RequestBody Transaction transaction, @PathVariable("id") int id) {
@@ -50,7 +65,8 @@ public class TransactionController {
 //	}
 	
 	@DeleteMapping(path = "{id}")
-	public void deleteTransaction(@PathVariable Integer id) {
-		service.deleteTransaction(id);
+	public void deleteTransaction(@PathVariable Long id) {
+		System.out.println("DELETE TRANSACTION");
+		transactionService.deleteTransaction(id);
 	}
 }

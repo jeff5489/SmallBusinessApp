@@ -6,10 +6,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,20 +23,26 @@ import javax.persistence.Table;
 public class Transaction {
 	
 	@Id
-	@Column(name = "transactionId")
-	private String transactionId;
-	@Column(name = "transactionDateTime")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@Column(name = "transaction_Id")
+	private Long transactionId;
+//	@Column(name = "transaction_DateTime")
 	private LocalDateTime transactionDateTime;
-	@Column(name = "customerId")
+//	@Column(name = "transaction_Customer_Id")
 	private String customerId;
-	@Column(name = "transactionAmount")
+//	@Column(name = "transaction_Amount")
 	private double transactionAmount;
+
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Product> productsOfTransaction = new ArrayList<Product>();
-	
+	@ManyToMany
+//	(cascade = CascadeType.ALL)
+	private List<Product> productsOfTransaction;
 	
 	public Transaction() {
+	}
+	
+	public void addProductToList(Product product) {
+		productsOfTransaction.add(product);
 	}
 
 	public double getTransactionAmount() {
@@ -40,11 +51,11 @@ public class Transaction {
 		return transactionAmount;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return transactionId;
 	}
 
-	public void setId(String transactionId) {
+	public void setId(Long transactionId) {
 		this.transactionId = transactionId;
 	}
 
@@ -59,9 +70,7 @@ public class Transaction {
 		this.productsOfTransaction = productsOfTransaction;
 	}
 	
-	
-
-	public Transaction(String id, LocalDateTime transactionDateTime, String customerID, List<Product> productsOfTransaction,
+	public Transaction(Long id, LocalDateTime transactionDateTime, String customerID, List<Product> productsOfTransaction,
 		double transactionAmount) {
 		this.transactionId = id;
 		this.transactionDateTime = transactionDateTime;
@@ -106,14 +115,14 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionDateTime=" + transactionDateTime + ", customerID=" + customerId
-				+ ", productsOfTransaction=" + productsOfTransaction + ", transactionAmount=" + transactionAmount + "]";
+		return "Transaction [transactionId=" + transactionId + ", transactionDateTime=" + transactionDateTime
+				+ ", customerId=" + customerId + ", transactionAmount=" + transactionAmount + ", productsOfTransaction="
+				+ productsOfTransaction + "]";
 	}
-	
-//	private void calculateTransactionAmount() {
-//		transactionAmount = productsOfTransaction.stream().mapToDouble(i -> i.getQuantity() * i.getSalePrice()).sum();
+
+//	@Override
+//	public String toString() {
+//		return "Transaction [transactionDateTime=" + transactionDateTime + ", customerID=" + customerId
+//				+ ", productsOfTransaction=" + productsOfTransaction + ", transactionAmount=" + transactionAmount + "]";
 //	}
-	
-	
-	
 }

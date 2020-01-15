@@ -19,7 +19,7 @@ public class ReturnItem extends Product {
 	}
 
 	
-	public ReturnItem(String id, String name, double salePrice, int quantity) {
+	public ReturnItem(long id, String name, double salePrice, int quantity) {
 		super(id, name, salePrice);
 		this.quantity = quantity;
 	}

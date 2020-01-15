@@ -30,28 +30,34 @@ public class ProductController {
 	}
 	
 	@GetMapping
+	
 	public List<Product> getAll() {
+		System.out.println("getAll Products reached");
 		return service.getProducts();
 	}
 	
 	@GetMapping(path = "{id}")
-	public Optional getProduct(@NotNull @PathVariable("id")int id) {
+	public Optional getProduct(@NotNull @PathVariable("id")long id) {
+		System.out.println("get one Products reached");
 		return service.getProduct(id);
 	}
 	
 	@PostMapping
 	public void addProduct(@RequestBody Product product) {
+		System.out.println("add one Product reached");
 		service.addProduct(product);
 	}
 	
 	@PutMapping(path = "{id}")
-	public void updateProduct(@RequestBody Product product, @PathVariable("id") int id) {
+	public void updateProduct(@RequestBody Product product, @PathVariable("id") long id) {
+		System.out.println("updateProduct reached");
 		service.updateProduct(product, id);
 
 	}
 	
 	@DeleteMapping(path = "{id}")
-	public void deleteProduct(@PathVariable Integer id) {
+	public void deleteProduct(@PathVariable long id) {
+		System.out.println("deleteProduct reached");
 		service.deleteProduct(id);
 	}
 	

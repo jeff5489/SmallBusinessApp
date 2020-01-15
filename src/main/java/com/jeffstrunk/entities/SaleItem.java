@@ -18,7 +18,7 @@ public class SaleItem extends Product {
 	}
 
 
-	public SaleItem(String id, String name, double salePrice, int quantity) {
+	public SaleItem(long id, String name, double salePrice, int quantity) {
 		super(id, name, salePrice);
 		this.quantity = quantity;
 	}
